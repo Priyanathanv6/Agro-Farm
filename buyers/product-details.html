@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agricultural Decision Support Management System</title>
+  <link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<style>
+
+  /* PRODUCT DETAILS VIEW */
+.product-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.details-section {
+  margin-top: 24px;
+}
+
+.details-section h2 {
+  color: #28a745;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.details-section p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.tags span {
+  display: inline-block;
+  background: #d0f0d6;
+  color: #276c39;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin: 5px 8px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.actions {
+  margin-top: 25px;
+}
+
+.actions button {
+  background: linear-gradient(to right, #43a047, #2e7d32);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.actions button:hover {
+  transform: scale(1.05);
+}
+
+/* SIDEBAR */
+.buyer-sidebar {
+  position: fixed;
+  top: 200px;
+  left: 0;
+  width: 250px;
+  background-color: #eaffed;
+  border-right: 2px solid #28a745;
+  height: calc(100% - 200px);
+  padding-top: 30px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  z-index: 999;
+}
+
+.buyer-sidebar a {
+  display: block;
+  padding: 14px 24px;
+  color: #333;
+  text-decoration: none;
+  font-size: 17px;
+  border-left: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.buyer-sidebar a:hover,
+.buyer-sidebar a.active {
+  background-color: #d9fce1;
+  border-left: 5px solid #28a745;
+  color: #28a745;
+  font-weight: bold;
+}
+
+  /* PRODUCT GRID */
+/* ==== Product Cards Grid ==== */
+.product-cart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 30px;
+}
+
+.product-card {
+  background-color: #fff;
+  width: 260px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.product-card p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.product-card button {
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: linear-gradient(to right, #28a745, #218838);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.product-card button:hover {
+  background: linear-gradient(to right, #218838, #1e7e34);
+  transform: scale(1.05);
+}
+
+.buy-button {
+  background: linear-gradient(to right, #28a745, #1e562d);
+  color: white;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.buy-button:hover {
+  background: #1e562d;
+}
+
+/* SUBMENU (Alternative Compact Sidebar) */
+.buyer-submenu {
+  margin-top: 200px;
+  padding: 10px;
+  width: 200px;
+  background-color: #f1fff7;
+  border-radius: 10px;
+  border: 1px solid #c3e8d1;
+}
+
+.buyer-submenu a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 8px;
+  color: #2d2d2d;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.buyer-submenu a:hover,
+.buyer-submenu a.active {
+  background-color: #dffce8;
+  border-left: 4px solid #28a745;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  body {
+    margin-left: 0;
+  }
+
+  .buyer-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  .main-container {
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .product-card {
+    width: 90%;
+  }
+}
+
+
+.search-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns everything to the right */
+  align-items: center; /* Ensures equal height alignment */
+  gap: 10px; /* Space between input and button */
+  width: 100%; /* Makes the container take full width */
+  margin-top: 30px; /* Adjust position */
+}
+
+input[type="text"] {
+  width: 250px;
+  padding: 10px;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+}
+
+button {
+  padding: 9px 15px; /* Fix missing padding */
+  background-color: #a2d6a2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+
+
+button:hover {
+  background-color: #4CAF50;
+}
+</style>
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="container">
+    <h1 class="logo">Agri🌱</h1>
+  <div class="navbar-links" id="navbar-links">
+    <p><a href="../index.html">Home</a></p> 
+    <p><a href="../farmar.html">Farmer</a></p> 
+    <p><a href="../buyer.html">Buyer</a></p> 
+    <p><a href="../agriculturists.html">Agriculturists</a></p>
+    <p><a href="../contact.html">Contact US</a></p>
+  </div>
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  </div>
+</nav>
+<div id="message-box" class="message-box" style="display: none;"></div>
+
+  <section class="agristsec1">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+                <div class="head">
+              <h2>Explore Farmer Products</h2>
+<p>Find fresh, quality produce directly from trusted farmers near you</p>
+
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-12">
+                 <div class="search-container">
+                  <input type="text" id="searchInput" placeholder="Search by Farmer or Product">
+                  <button onclick="fetchProducts()">🔍</button> <!-- Search icon as button -->
+                </div>
+
+
+                <div class="product-cart-container" id="product-cart-container">
+                  <!-- ✅ Products will appear here -->
+                </div>
+              </div>
+          </div>
+        </div>
+    </section>
+  <footer class="footer">
+      <div class="container ">
+          <div class="row line">
+            <div class="col-md-4">
+                <h2 class="Aogo">
+                      <a  href="index.html">Agrow<span class="sub-color">farm</span></a>
+                  </h2>
+            </div>
+            <div class="col-md-8">
+                <div class="socillink">
+                   <ul>
+                          <li class="w3follow">Follows On:</li>
+                          <li><a href="https://www.facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                          <li><a href="https://twitter.com" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a></li>
+                          <li><a href="https://www.instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a></li>
+                          <li><a href="https://www.linkedin.com" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                      </ul>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>Our vision</h2>
+                    <p>At Agrofarm, we are committed to transforming agriculture through knowledge, innovation, and sustainability. Founded with a deep respect for the land and those who cultivate it, our mission is to support farmers and agri-businesses with modern solutions that increase productivity while preserving our natural resources.</p>
+                    <p>We believe that agriculture is not just a business; it’s a way of life. Our vision is to build a food-secure future where innovation meets tradition, and where every farmer has the tools they need to succeed.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                      <ul>
+                          <li><a href="#">Privacy Policy</a></li>
+                          <li><a href="#">Terms of Service</a></li>
+                          <li><a href="#">Agriculturists</a></li>
+                          <li><a href="#">Farmer</a></li>
+                          <li><a href="#">Contact us</a></li>
+                          <li><a href="#">FAQ</a></li>
+                      </ul> 
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                     <h5>Phone</h5>
+                      <h5 class="phone-number-text mt-2"><a href="tel:+1211127368">+1 (21) 112 7368</a></h5>
+                      <h5>E-mail</h5>
+                      <h5 class="email-cont-text mt-1"><a href="mailto:Agrowfarm@mail.com" class="mail">Agrofarm@mail.com</a></h5>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright ">
+                  <p >© 2025 Agricultural Decision Support System <a  href="#">Agrow<span class="sub-color">farm</span></a></p>
+              </div>
+            </div>
+          </div>
+      </div>
+</footer>
+ <script>
+    // Optional: Load dynamic product data using localStorage/sessionStorage if needed
+    function addToCart() {
+      alert("✅ Product added to cart!");
+      // You can enhance this with localStorage cart logic
+    }
+
+    function goBack() {
+      window.location.href = "../buyer.html"; // or your buyer product list page
+    }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  displayProducts();
+});
+
+// ✅ Display all products from localStorage
+function displayProducts() {
+  const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+  const productCartContainer = document.getElementById("product-cart-container");
+  productCartContainer.innerHTML = "";
+
+  if (storedProducts.length > 0) {
+    storedProducts.forEach(product => {
+      const productCard = document.createElement("div");
+      productCard.classList.add("product-card");
+
+      const imageElem = document.createElement("img");
+      imageElem.src = product.image || "default-image.jpg";
+      imageElem.alt = product.productName;
+      imageElem.style.width = "100%";
+      imageElem.style.maxHeight = "200px";
+      imageElem.style.borderRadius = "10px";
+
+      const nameElem = document.createElement("p");
+      nameElem.innerHTML = `<strong>${product.productName}</strong>`;
+
+      const farmerElem = document.createElement("p");
+      farmerElem.textContent = `Farmer: ${product.farmerName}`;
+
+      const priceElem = document.createElement("p");
+      priceElem.textContent = `Price: ₹${product.price} (${product.priceUnit})`;
+
+      const quantityElem = document.createElement("p");
+      quantityElem.textContent = `Quantity: ${product.quantity}`;
+
+      const transportElem = document.createElement("p");
+      transportElem.textContent = `Transport: ${product.transportAvailability}`;
+
+      const buyButton = document.createElement("button");
+      buyButton.textContent = "Buy";
+      buyButton.addEventListener("click", function () {
+        addToCart(product); // ✅ Calls the correct cart function
+      });
+
+      productCard.appendChild(imageElem);
+      productCard.appendChild(nameElem);
+      productCard.appendChild(farmerElem);
+      productCard.appendChild(priceElem);
+      productCard.appendChild(quantityElem);
+      productCard.appendChild(transportElem);
+      productCard.appendChild(buyButton);
+
+      productCartContainer.appendChild(productCard);
+    });
+  } else {
+    productCartContainer.innerHTML = `<p>No products available.</p>`;
+  }
+}
+
+const buyButton = document.createElement("button");
+buyButton.textContent = "Buy";
+buyButton.addEventListener("click", function () {
+  addToCart(product); // ✅ Triggers redirect
+});
+
+
+const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+console.log(cartItems);
+
+
+// ✅ Add to cart and redirect
+function addToCart(product) {
+  let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const existingItem = cartItems.find(item => item.productName === product.productName);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cartItems.push({ ...product, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+
+  // ✅ Redirect to cart.html
+  window.location.href = "cart.html";
+}
+
+// ✅ Optional: Search by farmer or product name
+function fetchProducts() {
+  const searchQuery = document.getElementById("searchInput").value.trim().toLowerCase();
+  const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+  const productCartContainer = document.getElementById("product-cart-container");
+  productCartContainer.innerHTML = "";
+
+  const filteredProducts = storedProducts.filter(product =>
+    product.farmerName.toLowerCase().includes(searchQuery) ||
+    product.productName.toLowerCase().includes(searchQuery)
+  );
+
+  if (filteredProducts.length > 0) {
+    filteredProducts.forEach(product => {
+      const productCard = document.createElement("div");
+      productCard.classList.add("product-card");
+
+      const imageElem = document.createElement("img");
+      imageElem.src = product.image || "default-image.jpg";
+      imageElem.alt = product.productName;
+      imageElem.style.width = "100%";
+      imageElem.style.maxHeight = "200px";
+      imageElem.style.borderRadius = "10px";
+
+      const nameElem = document.createElement("p");
+      nameElem.innerHTML = `<strong>${product.productName}</strong>`;
+
+      const farmerElem = document.createElement("p");
+      farmerElem.textContent = `Farmer: ${product.farmerName}`;
+
+      const priceElem = document.createElement("p");
+      priceElem.textContent = `Price: ₹${product.price} (${product.priceUnit})`;
+
+      const quantityElem = document.createElement("p");
+      quantityElem.textContent = `Quantity: ${product.quantity}`;
+
+      const transportElem = document.createElement("p");
+      transportElem.textContent = `Transport: ${product.transportAvailability}`;
+
+      const buyButton = document.createElement("button");
+      buyButton.textContent = "Buy";
+      buyButton.addEventListener("click", function () {
+        addToCart(product);
+      });
+
+      productCard.appendChild(imageElem);
+      productCard.appendChild(nameElem);
+      productCard.appendChild(farmerElem);
+      productCard.appendChild(priceElem);
+      productCard.appendChild(quantityElem);
+      productCard.appendChild(transportElem);
+      productCard.appendChild(buyButton);
+
+      productCartContainer.appendChild(productCard);
+    });
+  } else {
+    productCartContainer.innerHTML = `<p>No products found matching '${searchQuery}'.</p>`;
+  }
+}
+
+
+
+  </script>
+</body>
+</html>

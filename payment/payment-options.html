@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Payment Method</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background: #f0f8f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.payment-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 350px;
+}
+
+.payment-options button {
+  display: block;
+  margin: 15px auto;
+  padding: 12px 20px;
+  width: 80%;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.payment-options button:hover {
+  background-color: #388e3c;
+}
+</style>
+</head>
+<body>
+  <div class="payment-container">
+    <h2>Select Your Payment Method</h2>
+    <div class="payment-options">
+      <button onclick="redirectTo('credit-card.html')">Credit Card</button>
+      <button onclick="redirectTo('debit-card.html')">Debit Card</button>
+      <button onclick="redirectTo('netbanking.html')">Net Banking</button>
+      <button onclick="redirectTo('upi.html')">UPI</button>
+    </div>
+  </div>
+
+  <script>
+    function redirectTo(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>

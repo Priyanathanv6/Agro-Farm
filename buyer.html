@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agricultural Decision Support Management System</title>
+  <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="container">
+    <h1 class="logo">Agri🌱</h1>
+  <div class="navbar-links" id="navbar-links">
+    <p><a href="index.html">Home</a></p> 
+    <p><a href="farmar.html">Farmer</a></p> 
+    <p><a href="buyer.html">Buyer</a></p> 
+    <p><a href="agriculturists.html">Agriculturists</a></p>
+    <p><a href="contact.html">Contact US</a></p>
+  </div>
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  </div>
+</nav>
+<div id="message-box" class="message-box" style="display: none;"></div>
+
+  <div class="farmersec1" style="padding-top: 25px;">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+                <div class="head">
+               <h2>Welcome to AgroFriendly</h2>
+                <p>Buy Directly. Support Farmers. Make a Difference.</p>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  
+
+
+  <section class="farmersec6">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+              <div class="buymenus position-relative">
+                  <nav class="buyer-sidebar">
+                  <a href="buyers/product-details.html" data-page="product-details">🛍️ Product Details</a>
+                  <a href="buyers/cart.html" data-page="cart">🛒 Cart</a>
+                  <a href="buyers/checkout.html" data-page="checkout">💳 Checkout</a>
+                  <a href="buyers/order.html" data-page="orders">📦 Orders</a>
+                  <a href="buyers/chat.html" data-page="chat">💬 Chat</a>
+                  <a href="buyers/help.html" data-page="help">🆘 Help</a>
+                </nav>
+              </div>
+          </div>
+
+          <div class="col-md-6">
+                <div class="sechead text-center">
+                <h2>Buying Details and flows</h2>
+              </div>
+                <div class="centered-section">
+                  <form class="card-form" id="myForm" onsubmit="handleSubmit(event)">
+
+                        <h2>Buyer's Details</h2>
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required />
+
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required />
+
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" />
+
+                                <label for="state">State</label>
+                                <select id="state" name="state" onchange="loadDistricts()"  required />
+                                    <option value="">--Select State--</option>
+                                      <option value="andhraPradesh">Andhra Pradesh</option>
+                                      <option value="arunachalPradesh">Arunachal Pradesh</option>
+                                      <option value="assam">Assam</option>
+                                      <option value="bihar">Bihar</option>
+                                      <option value="chhattisgarh">Chhattisgarh</option>
+                                      <option value="goa">Goa</option>
+                                      <option value="gujarat">Gujarat</option>
+                                      <option value="haryana">Haryana</option>
+                                      <option value="himachalPradesh">Himachal Pradesh</option>
+                                      <option value="jharkhand">Jharkhand</option>
+                                      <option value="karnataka">Karnataka</option>
+                                      <option value="kerala">Kerala</option>
+                                      <option value="madhyaPradesh">Madhya Pradesh</option>
+                                      <option value="maharashtra">Maharashtra</option>
+                                      <option value="manipur">Manipur</option>
+                                      <option value="meghalaya">Meghalaya</option>
+                                      <option value="mizoram">Mizoram</option>
+                                      <option value="nagaland">Nagaland</option>
+                                      <option value="odisha">Odisha</option>
+                                      <option value="punjab">Punjab</option>
+                                      <option value="rajasthan">Rajasthan</option>
+                                      <option value="sikkim">Sikkim</option>
+                                      <option value="tamilnadu">Tamil Nadu</option>
+                                      <option value="telangana">Telangana</option>
+                                      <option value="tripura">Tripura</option>
+                                      <option value="uttarPradesh">Uttar Pradesh</option>
+                                      <option value="uttarakhand">Uttarakhand</option>
+                                      <option value="westBengal">West Bengal</option>
+                                      <option value="andamanNicobar">Andaman and Nicobar Islands</option>
+                                      <option value="chandigarh">Chandigarh</option>
+                                      <option value="dadraNagarHaveli">Dadra and Nagar Haveli and Daman and Diu</option>
+                                      <option value="lakshadweep">Lakshadweep</option>
+                                      <option value="delhi">Delhi (National Capital Territory of Delhi)</option>
+                                      <option value="puducherry">Puducherry</option>
+                                      <option value="ladakh">Ladakh</option>
+                                  </select>
+                                  
+                                <label for="district">District</label>
+                                <select id="district" name="district" required>
+                                    <option value="">--Select District--</option>
+                                </select>
+                                  <label for="quantity-needed">Quantity Needed</label>
+                                    <input
+                                      type="number"
+                                      id="quantity-needed"
+                                      name="quantityNeeded"
+                                      min="1"
+                                      required
+                                      placeholder="Enter quantity"
+                                    />
+                                    <select id="quantity-unit" name="quantityUnit" required>
+                                      <option value="kg">kg</option>
+                                      <option value="tons">tons</option>
+                                    </select>
+
+
+                                    <label for="products">Product</label>
+                                <input type="text" id="products" name="products" required />
+                                <label for="preferred-date">Preferred Delivery Date</label>
+                                <input type="date" id="preferred-date" name="preferredDate" required />
+
+                                <label for="additional-notes">Additional Notes:</label>
+                                <textarea id="additional-notes" name="notes" rows="2" placeholder="Any special requests or delivery instructions"></textarea>
+
+                                <button type="submit">Submit</button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- <div class="col-md-3">
+                  <div class="sechead text-center">
+                    <h2>Product Details</h2>
+                  </div> -->
+                    <div id="toast" class="toast">✅ Buyer's details updated successfully!</div>
+                  <!-- <div class="product-cart-container" id="product-cart-container"> -->
+                    <!-- Products will appear here -->
+                  <!-- </div> -->
+                </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+    <section class="farmersec2">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+          <div class="image-section">
+          <img src="images/slider7.jpg" alt="Farmers and Market" >
+        </div>
+        </div>
+        <div class="col-md-6">
+          <div class="sechead">
+                 <h2>Why buyers matter to farmers</h2>
+                <p>Buyers provide the demand that fuels a farmer’s livelihood. By purchasing directly, you help farmers earn fair wages, reduce dependency on middlemen, and sustain their farms.</p>
+              </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="farmarsec3 sec3">
+      <div class="container">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="sechead fade-in">
+                  <h2>How You Help Farmers Thrive</h2>
+                    <ul class="impact-list">
+                      <li><strong>💰 Fair Prices:</strong> Your purchase ensures better income for farmers.</li>
+                      <li><strong>📈 Stability:</strong> Regular buyers help farmers plan better.</li>
+                      <li><strong>💬 Feedback Loop:</strong> Your choices help farmers grow what’s needed.</li>
+                      <li><strong>🌱 Encouragement:</strong> Supports eco-friendly farming practices.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="image-section">
+                <video controls autoplay muted loop>
+                  <source src="images/istockphoto-1935100614-640_adpp_is.mp4" type="video/mp4" style="height: 350px; width: 350px;">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="farmersec4">
+      <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-md-6">
+              <div class="image-section">
+              <img src="images/buyer4.jpg" alt="Basket of Produce" >
+            </div>
+          </div>
+          <div class="col-md-6">
+              <div class="sechead  fade-up">
+               <h2>How It Works</h2>
+                <ol  class="impact-list">
+                  <li>Browse products</li>
+                  <li>Add to cart and place order</li>
+                  <li>Farmer gets notified</li>
+                  <li>Delivery or pickup</li>
+                  <li>Leave feedback</li>
+                </ol>
+            </div>
+             <div class="sechead ">
+                <h2>What You Can Do</h2>
+                <ul  class="impact-list">
+                  <li>Browse and buy fresh farm products</li>
+                  <li>Chat directly with farmers</li>
+                  <li>Rate and review produce</li>
+                  <li>Share and recommend farmers</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="farmersec5">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+             <div class=" sechead stats fade-right text-center">
+                <h2>Our Impact</h2>
+                <div class="stats-container">
+                  <div class="stat-card">+1500 Farmers Empowered</div>
+                  <div class="stat-card">+25% Avg Profit Growth</div>
+                  <div class="stat-card">+32000 kg Organic Sold</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="sechead cta fade-up text-center">
+                 <h2>Support Farming</h2>
+                  <p>Be a Responsible Consumer. Buy Local. Support a Farmer Today!</p>
+                  <a href="#" class="btn">Start Shopping</a>
+              </div>
+            </div>
+        </div>
+      </div>
+  </section>
+
+
+  <footer class="footer">
+      <div class="container ">
+          <div class="row line">
+            <div class="col-md-4">
+                <h2 class="Aogo">
+                      <a  href="index.html">Agrow<span class="sub-color">farm</span></a>
+                  </h2>
+            </div>
+            <div class="col-md-8">
+                <div class="socillink">
+                   <ul>
+                          <li class="w3follow">Follows On:</li>
+                          <li><a href="https://www.facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                          <li><a href="https://twitter.com" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a></li>
+                          <li><a href="https://www.instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a></li>
+                          <li><a href="https://www.linkedin.com" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                      </ul>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>Our vision</h2>
+                    <p>At Agrofarm, we are committed to transforming agriculture through knowledge, innovation, and sustainability. Founded with a deep respect for the land and those who cultivate it, our mission is to support farmers and agri-businesses with modern solutions that increase productivity while preserving our natural resources.</p>
+                    <p>We believe that agriculture is not just a business; it’s a way of life. Our vision is to build a food-secure future where innovation meets tradition, and where every farmer has the tools they need to succeed.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                      <ul>
+                          <li><a href="#">Privacy Policy</a></li>
+                          <li><a href="#">Terms of Service</a></li>
+                          <li><a href="#">Agriculturists</a></li>
+                          <li><a href="#">Farmer</a></li>
+                          <li><a href="#">Contact us</a></li>
+                          <li><a href="#">FAQ</a></li>
+                      </ul> 
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                     <h5>Phone</h5>
+                      <h5 class="phone-number-text mt-2"><a href="tel:+1211127368">+1 (21) 112 7368</a></h5>
+                      <h5>E-mail</h5>
+                      <h5 class="email-cont-text mt-1"><a href="mailto:Agrowfarm@mail.com" class="mail">Agrofarm@mail.com</a></h5>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright ">
+                  <p >© 2025 Agricultural Decision Support System <a  href="#">Agrow<span class="sub-color">farm</span></a></p>
+              </div>
+            </div>
+          </div>
+      </div>
+</footer>
+ 
+ <script>
+    function loadProducts() {
+      const productGrid = document.getElementById("buyerProductGrid");
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+
+      if (products.length === 0) {
+        productGrid.innerHTML = "<p>No products available yet.</p>";
+        return;
+      }
+
+      products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" width="200">
+          <h3>${product.name}</h3>
+          <p><strong>Farmer:</strong> ${product.farmer}</p>
+          <p><strong>Price:</strong> ₹${product.price}</p>
+          <p><strong>Quality:</strong> ${product.quantity}</p>
+          <p><strong>Transport:</strong> ${product.transport}</p>
+          <button onclick="buyNow('${product.name}')">Buy</button>
+        `;
+
+        productGrid.appendChild(card);
+      });
+    }
+
+    function buyNow(productName) {
+      alert(`🛒 Buying: ${productName}`);
+      // redirect to payment.html if needed
+      // window.location.href = "payment.html";
+    }
+
+   // Success message on farmer details form
+   document.getElementById("myForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent form submission
+      
+      // Show toast notification
+      var toast = document.getElementById("toast");
+      toast.classList.add("show");
+
+      // Hide toast after 3 seconds
+      setTimeout(function () {
+        toast.classList.remove("show");
+      }, 3000);
+    });
+
+
+   
+     // Function to dynamically load districts based on the selected state
+function loadDistricts() {
+    const stateSelect = document.getElementById("state");
+    const districtSelect = document.getElementById("district");
+    const selectedState = stateSelect.value;
+    const districts = {
+        andhraPradesh: [
+    "Anantapur", "Chittoor", "East Godavari", "Guntur", "Kadapa", "Krishna", "Kurnool", "Nellore", "Prakasam", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa", 
+    "Sri Potti Sriramulu Nellore", "West Godavari", "Kakinada", "Srikakulam", "Vizianagaram"
+  ],
+  arunachalPradesh: [
+    "Anjaw", "Changlang", "Dibang Valley", "East Kameng", "East Siang", "Kamle", "Kra Daadi", "Kurung Kumey", "Lepa Rada", "Lower Dibang Valley", "Lower Siang", "Namsai", "Pakke Kessang",
+    "Papum Pare", "Siang", "Tawang", "Tirap", "Upper Siang", "Upper Subansiri", "West Kameng", "West Siang"
+  ],
+  assam:[
+    "Baksa", "Barpeta", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji", "Dhubri", "Dibrugarh", "Goalpara", "Golaghat", "Hailakandi", "Jorhat",
+    "Kamrup Metropolitan", "Karimganj", "Karbi Anglong", "Kokrajhar", "Lakhimpur", "Majuli", "Morigaon", "Nagaon", "Nalbari", "Sivasagar", "Sonitpur"
+  ],
+  bihar:[
+    "Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar", "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui",
+    "Jehanabad", "Kaimur", "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger", "Muzaffarpur"
+  ],
+  chhattisgarh:[
+    "Balod", "Baloda Bazar", "Balrampur", "Bastar", "Bijapur", "Bilaspur", "Dantewada", "Dhamtari", "Durg", "Gariaband", "Janjgir-Champa", "Jashpur", "Kabirdham",
+    "Kanker", "Korba", "Koriya", "Mahasamund", "Mungeli", "Narayanpur", "Raigarh", "Raipur"
+  ],
+  goa:[
+    "North Goa", "South Goa"
+  ],
+    gujarat:[
+        "Ahmedabad", "Amreli", "Anand", "Banaskantha", "Bharuch", "Bhavnagar", "Dahod", "Dangs", "Gandhinagar", "Gir Somnath", "Jamnagar", "Junagadh", "Kutch",
+        "Kheda", "Mahisagar", "Mehsana", "Narmada", "Navsari", "Panchmahal", "Patan", "Porbandar"
+    ],
+    haryana:[
+        "Ambala", "Bhiwani", "Faridabad", "Fatehabad", "Gurugram", "Hisar", "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh",
+        "Nuh", "Palwal", "Panchkula", "Panipat", "Rewari", "Rohtak", "Sirsa", "Sonipat"
+    ],
+    himachalPradesh:[
+        "Bilaspur", "Chamba", "Hamirpur", "Kinnaur", "Kullu", "Lahaul and Spiti", "Mandi", "Shimla", "Sirmaur", "Solan", "Una"
+    ],
+    jharkhand:[
+        "Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garhwa", "Giridih", "Godda", "Gumla", "Hazaribagh", "Jamtara",
+        "Khunti", "Koderma", "Latehar", "Lohardaga", "Pakur", "Palamu", "Ranchi", "Sahibganj", "Seraikela Kharsawan"
+    ],
+    karnataka:[
+        "Bagalkot", "Ballari", "Belagavi", "Bengaluru Rural", "Bengaluru Urban", "Bidar", "Chamarajanagar", "Chikkaballapura", "Chikkamagaluru", "Chitradurga",
+        "Dakshina Kannada", "Davanagere", "Dharwad", "Gadag", "Hassan", "Haveri", "Kodagu", "Kolar", "Koppal", "Mandya"
+    ],
+    kerala:[
+        "Alappuzha", "Ernakulam", "Idukki", "Kasaragod", "Kollam", "Kottayam", "Kozhikode", "Malappuram", "Palakkad", "Pathanamthitta",
+        "Thiruvananthapuram", "Thrissur", "Wayanad"
+    ],
+    madhyaPradesh:[
+        "Agar Malwa", "Alirajpur", "Anuppur", "Ashoknagar", "Balaghat", "Barwani", "Betul", "Bhind", "Bhopal", "Burhanpur",
+        "Chhatarpur", "Chhindwara", "Damoh", "Datia", "Dewas", "Dhar", "Dindori", "Guna", "Gwalior", "Harda"
+    ],
+    maharashtra:[
+        "Ahmednagar", "Akola", "Amravati", "Aurangabad", "Beed", "Bhandara", "Buldhana", "Chandrapur", "Dhule", "Gadchiroli",
+        "Gondia", "Hingoli", "Jalna", "Kolhapur", "Latur", "Mumbai City", "Mumbai Suburban", "Nagpur", "Nanded", "Nashik"
+    ],
+    manipur:[
+        "Bishnupur", "Chandel", "Churachandpur", "Imphal East", "Imphal West", "Jiribam", "Kakching", "Kamjong", "Kangpokpi",
+        "Noney", "Pherzawl", "Senapati", "Tamenglong", "Tengnoupal", "Thoubal", "Ukhrul"
+    ],
+    meghalaya:[
+        "East Garo Hills", "East Khasi Hills", "Jaintia Hills", "Ri Bhoi", "South Garo Hills", "South West Garo Hills", "South West Khasi Hills", "West Garo Hills", "West Khasi Hills"
+    ],
+    mizoram:[
+        "Aizawl", "Champhai", "Hnahthial", "Khawzawl", "Kolasib", "Lawngtlai", "Lunglei", "Mamit", "Saiha", "Serchhip"
+    ],
+    nagaland:[
+        "Dimapur", "Kiphire", "Kohima", "Longleng", "Mokokchung", "Mon", "Peren", "Phek", "Tuensang", "Wokha", "Zunheboto"
+    ],
+    odisha:[
+        "Angul", "Balangir", "Balasore", "Bargarh", "Bhadrak", "Bolangir", "Dhenkanal", "Ganjam", "Ganjam", "Jagatsinghpur",
+        "Jajpur", "Jharsuguda", "Kalahandi", "Kandhamal", "Kendrapara", "Kendujhar", "Khurda", "Koraput", "Malkangiri"
+    ],
+    punjab:[
+        "Amritsar", "Barnala", "Bathinda", "Faridkot", "Fatehgarh Sahib", "Fazilka", "Gurdaspur", "Hoshiarpur", "Jalandhar",
+        "Kapurthala", "Ludhiana", "Mansa", "Moga", "Muktsar", "Nawanshahr", "Pathankot", "Patiala", "Rupnagar"
+    ],
+    rajasthan:[
+        "Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh",
+        "Churu", "Dausa", "Dholpur", "Dungarpur", "Hanumangarh", "Jaipur", "Jaisalmer", "Jalore", "Jhalawar"
+    ],
+    sikkim:[
+        "East Sikkim", "North Sikkim", "South Sikkim", "West Sikkim"
+    ],
+    tamilnadu: [
+        "Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri",
+        "Dindigul", "Erode", "Kallakurichi", "Kanchipuram", "Kanniyakumari", "Karur",
+        "Krishnagiri", "Madurai", "Mayiladuthurai", "Nagapattinam", "Namakkal",
+        "Nilgiris", "Perambalur", "Pudukkottai", "Ramanathapuram", "Ranipet",
+        "Salem", "Sivaganga", "Tenkasi", "Thanjavur", "Theni", "Thoothukudi",
+        "Tiruchirappalli", "Tirunelveli", "Tirupathur", "Tiruppur", "Tiruvallur",
+        "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"
+      ],
+    telangana:[
+        "Adilabad", "Hyderabad", "Karimnagar", "Khammam", "Mahabubnagar", "Medak", "Nalgonda", "Nizamabad", "Rangareddy",
+        "Warangal"
+    ],
+    tripura:[
+        "Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti", "West Tripura"
+    ],
+    uttarakhand:[
+        "Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital", "Pauri Garhwal", "Pithoragarh",
+        "Rudraprayag", "Tehri Garhwal", "Udham Singh Nagar", "Uttarkashi"
+    ],
+    uttarPradesh:[
+        "Agra", "Aligarh", "Allahabad", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Azamgarh", "Badaun", "Baghpat",
+        "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bijnor", "Bulandshahr"
+    ],
+    westBengal:[
+        "Alipurduar", "Bankura", "Birbhum", "Burdwan", "Cooch Behar", "Dakshin Dinajpur", "Darjeeling", "Hooghly",
+        "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Koch Bihar", "Malda", "Murshidabad", "Nadia",
+        "North 24 Parganas", "Paschim Bardhaman", "Purba Bardhaman", "Purulia", "South 24 Parganas"
+    ],
+    andamanAndNicobar: [
+        "Nicobar", "North and Middle Andaman", "South Andaman"
+      ],
+    chandigarh: [
+        "Chandigarh"
+      ],
+    dadraAndNagarHaveli: [
+        "Dadra and Nagar Haveli"
+      ],
+    damanAndDiu: [
+        "Daman", "Diu"
+      ],
+    delhi: [
+        "Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi", "North West Delhi", "South Delhi",
+        "South East Delhi", "South West Delhi", "West Delhi"
+      ],
+    lakshadweep: [
+        "Lakshadweep"
+      ],
+    puducherry: [
+        "Karaikal", "Mahe", "Puducherry", "Yanam"
+      ],
+    jammuAndKashmir: [
+        "Anantnag", "Bandipora", "Baramulla", "Doda", "Ganderbal", "Jammu", "Kathua", "Kishtwar", "Kulgam",
+        "Poonch", "Rajouri", "Ramban", "Reasi", "Samba", "Shopian", "Srinagar", "Udhampur"
+      ],
+    ladakh: [
+        "Kargil", "Leh"
+      ]
+   
+};
+  // Clear previous districts
+    districtSelect.innerHTML = "";
+
+    // If a valid state is selected, populate the districts
+    if (districts[selectedState]) {
+        districts[selectedState].forEach(district => {
+            const option = document.createElement("option");
+            option.value = district;
+            option.textContent = district;
+            districtSelect.appendChild(option);
+        });
+    }
+}
+
+
+window.addEventListener('DOMContentLoaded', function () {
+  const container = document.getElementById("product-cart-container");
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+
+  if (products.length === 0) {
+    container.innerHTML = "<p>No products available.</p>";
+    return;
+  }
+
+  container.innerHTML = ""; // Clear old content
+
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+
+    card.innerHTML = `
+      <img src="${product.image}" alt="Product Image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+      <h3>${product.productName}</h3>
+      <p><strong>Farmer:</strong> ${product.farmerName}</p>
+      <p><strong>Price:</strong> ₹${product.price} ${product.priceUnit === "perKg" ? "/kg" : "/ton"}</p>
+      <p><strong>Quantity:</strong> ${product.quantity}</p>
+      <p><strong>Transport:</strong> ${product.transportAvailability === "yes" ? "✅ Available" : "❌ Not Available"}</p>
+      <button class="buy-button">Buy Now</button>
+    `;
+
+    container.appendChild(card);
+  });
+});
+
+
+
+const products = JSON.parse(localStorage.getItem("products")) || [];
+const productContainer = document.getElementById("productContainer");
+
+products.forEach(product => {
+  const card = document.createElement("div");
+  card.className = "product-card";
+  card.innerHTML = `
+    <img src="${product.image}" alt="${product.name}" />
+    <h3>${product.name}</h3>
+    <p>${product.description}</p>
+    <p>Price: ₹${product.price}</p>
+  `;
+  productContainer.appendChild(card);
+});
+
+
+
+
+const submenuLinks = document.querySelectorAll('.buyer-submenu a');
+    const pageSections = document.querySelectorAll('.page-section');
+
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+
+        const target = link.getAttribute('data-page');
+
+        // Hide all sections
+        pageSections.forEach(section => {
+          section.style.display = 'none';
+        });
+
+        // Show the selected section
+        const selectedSection = document.getElementById(target);
+        if (selectedSection) {
+          selectedSection.style.display = 'block';
+        }
+      });
+    });
+
+
+
+
+     // Function to handle navigation and loading of sections
+    document.querySelectorAll('.buyer-sidebar a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const page = this.getAttribute('data-page');
+        loadPage(page);
+      });
+    });
+
+    function loadPage(page) {
+      // Hide all sections
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      // Show the selected section
+      document.getElementById(page).style.display = 'block';
+    }
+
+    // Load the default page
+    loadPage('product-details');
+
+  </script>
+  <script src="js/buyer.js"></script>
+</body>
+</html>

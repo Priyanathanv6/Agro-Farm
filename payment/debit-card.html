@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debit Card Payment</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e6f0e6, #ccf2cc);
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Container Box */
+    .container {
+      max-width: 420px;
+      width: 100%;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Headline */
+    h2 {
+      margin-bottom: 20px;
+      color: #2a7a2a;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Input Fields */
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #2a7a2a;
+      outline: none;
+      background-color: #f3fff3;
+    }
+
+    /* Submit Button */
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #2a7a2a, #3ca63c);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #1a4d1a, #2a7a2a);
+      transform: scale(1.03);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+
+      input,
+      button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pay with Debit Card</h2>
+    <form onsubmit="event.preventDefault(); alert('Debit Card Payment Successful!');">
+      <input type="text" placeholder="Card Number" required />
+      <input type="text" placeholder="Cardholder Name" required />
+      <input type="text" placeholder="Expiry Date (MM/YY)" required />
+      <input type="text" placeholder="CVV" required />
+      <button type="submit">Pay ₹100</button>
+    </form>
+  </div>
+</body>
+</html>

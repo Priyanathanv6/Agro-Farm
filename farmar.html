@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agricultural Decision Support Management System</title>
+  <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<style>
+  /* ==== Product Cards Grid ==== */
+.product-cart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 30px;
+}
+
+.product-card {
+  background-color: #fff;
+  width: 260px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.product-card p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.product-card button {
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: linear-gradient(to right, #28a745, #218838);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.product-card button:hover {
+  background: linear-gradient(to right, #218838, #1e7e34);
+  transform: scale(1.05);
+}
+
+.buy-button {
+  background: linear-gradient(to right, #28a745, #1e562d);
+  color: white;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.buy-button:hover {
+  background: #1e562d;
+}
+</style>
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="container">
+    <h1 class="logo">Agri🌱</h1>
+  <div class="navbar-links" id="navbar-links">
+    <p><a href="index.html">Home</a></p> 
+    <p><a href="farmar.html">Farmer</a></p> 
+    <p><a href="buyer.html">Buyer</a></p> 
+    <p><a href="agriculturists.html">Agriculturists</a></p>
+    <p><a href="contact.html">Contact US</a></p>
+  </div>
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  </div>
+</nav>
+<div id="message-box" class="message-box" style="display: none;"></div>
+
+  <section class="farmersec1">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+                <div class="head">
+                <h1>Welcome to AgroFriendly</h1>
+                <p>Empowering Farmers. Enhancing Livelihoods. Growing Together.</p>
+                </div>
+            </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- <section class="farmersec2">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+          <div class="sechead">
+                <h2>Why Farmers Matter to Communities</h2>
+                <p>Farmers are the backbone of food security. Their work feeds families, supports local economies, and nurtures sustainable ecosystems.</p>
+                <p>We believe in farming that respects nature. Our initiatives focus on reducing chemical dependency, conserving water, and promoting biodiversity. Every step we take is aimed at a greener, healthier planet.</p>
+                <p>Our mission is to promote eco-friendly practices and improve farm productivity across regions.</p>
+              </div>
+        </div>
+        <div class="col-md-6">
+          <div class="image-section">
+          <img src="images/farmer2.jpeg" alt="Farmer in field" >
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="farmarsec3">
+      <div class="container">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="sechead fade-in">
+                  <h2 class="heading">Our Farmers – The Backbone of Our Nation</h2>
+                  <p>
+                    Farmers play a vital role in sustaining life on Earth. They work tirelessly,
+                    often through challenging weather and economic conditions, to grow the food
+                    that feeds our communities. In India, a country deeply rooted in agriculture,
+                    farmers are the foundation of our economy and cultural heritage.
+                  </p>
+                  <p>
+                    Despite their hard work, many farmers face issues such as lack of fair pricing,
+                    unpredictable weather, and limited access to modern technology. It's our responsibility
+                    to support them through awareness, platforms, and government support.
+                  </p>
+                  <p>
+                    Let us appreciate and stand with our farmers—our true heroes—who toil day and
+                    night to nourish the world.
+                  </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="sechead fade-left">
+              <h2>How Support Helps Farmers Thrive</h2>
+              <ul class="impact-list">
+                <li><strong>🌾 Better Crop Yields:</strong> Access to quality seeds and knowledge improves production.</li>
+                <li><strong>💧 Efficient Water Use:</strong> Modern irrigation techniques conserve water and increase growth.</li>
+                <li><strong>🚜 Access to Equipment:</strong> Affordable tools and machinery reduce labor and boost efficiency.</li>
+                <li><strong>📚 Training & Education:</strong> Learning sustainable methods leads to long-term success.</li>
+              </ul>
+            </div>
+            </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="farmersec4">
+      <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-md-6">
+              <div class="image-section">
+              <img src="images/farmer3.jpg" alt="Farmer in field" >
+            </div>
+          </div>
+          <div class="col-md-6">
+              <div class="sechead  fade-up">
+              <h2>What Farmers Can Do on AgroFriendly</h2>
+              <ul class="impact-list">
+                <li>Access latest crop and market info</li>
+                <li>Connect with buyers directly</li>
+                <li>Request equipment and training</li>
+                <li>Share best practices and success stories</li>
+              </ul>
+            </div>
+             <div class="sechead ">
+                <h2 >Challenges and Innovations in Modern Farming</h2>
+                <p>
+                  In recent years, farmers have embraced innovations such as precision farming,
+                  organic cultivation, and smart irrigation systems. However, small-scale farmers
+                  face constraints due to limited access to resources.
+                </p>
+                <p>
+                  Building resilient farming communities requires a collective effort from all sectors.
+                </p>
+              </div>
+          </div>
+        </div>
+      </div>
+  </section> -->
+
+  <section class="farmersec5">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+             <div class=" sechead text-center">
+                <h2>Month-wise Vegetable Gardening Calendar (South India)</h2>
+                <p>Applies to: Andhra Pradesh, Telangana, Karnataka, Kerala, Tamil Nadu</p>
+              </div>
+                <div class="table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Month</th>
+                        <th>Vegetables</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>January</td><td>Lettuce, Spinach, Gourds, Melons, Radish, Carrot, Onion, Tomato, Okra, Brinjal, Bean</td></tr>
+                      <tr><td>February</td><td>Lettuce, Spinach, Gourds, Melons, Radish, Carrot, Onion, Tomato, Okra, Brinjal, Bean</td></tr>
+                      <tr><td>March</td><td>Amaranthus, Coriander, Gourds, Beans, Melons, Spinach, Okra</td></tr>
+                      <tr><td>April</td><td>Onion, Amaranthus, Coriander, Gourds, Okra, Tomato, Chilli</td></tr>
+                      <tr><td>May</td><td>Okra, Onion, Chilli</td></tr>
+                      <tr><td>June</td><td>All Gourds, Solanaceae (Tomato, Brinjal, Chilli), Almost all Vegetables</td></tr>
+                      <tr><td>July</td><td>All Gourds, Solanaceae, Almost all Vegetables</td></tr>
+                      <tr><td>August</td><td>Carrot, Cauliflower, Beans, Beet</td></tr>
+                      <tr><td>September</td><td>Cauliflower, Cucumber, Onion, Peas, Spinach</td></tr>
+                      <tr><td>October</td><td>Brinjal, Cabbage, Capsicum, Cucumber, Beans, Peas, Spinach, Turnip, Watermelon</td></tr>
+                      <tr><td>November</td><td>Beet, Eggplant, Cabbage, Carrot, Beans, Lettuce, Melon, Okra, Turnip, Pumpkin</td></tr>
+                      <tr><td>December</td><td>Watermelon, Muskmelon, Ash gourd, Ridge gourd, Bitter gourd, Bottle gourd, Cucumber, Chilly, Cabbage</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="sechead text-center">
+                <h2>Month-wise Vegetable Gardening Calendar (North India)</h2>
+                  <p>Applies to: Punjab, Delhi, Haryana, Rajasthan, Uttar Pradesh</p>
+              </div>
+              <div class="table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Month</th>
+                      <th>Vegetables</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>January</td><td>Brinjal</td></tr>
+                    <tr><td>February</td><td>Applegourd, Bittergourd, Bottle gourd, Cucumber, French Beans, Okra, Sponge Gourd, Watermelon, Spinach</td></tr>
+                    <tr><td>March</td><td>French Beans, Okra, Sponge Gourd, Watermelon, Spinach</td></tr>
+                    <tr><td>April</td><td>Capsicum</td></tr>
+                    <tr><td>May</td><td>Onion, Pepper, Brinjal, All gourds, Cucumber, Cauliflower</td></tr>
+                    <tr><td>June</td><td>Cucumber, Cauliflower (Early), Okra, Onion, Sem, Tomato, Pepper</td></tr>
+                    <tr><td>July</td><td>All gourds, Cucumber, Radish, Tomato, Cabbage, Carrot</td></tr>
+                    <tr><td>August</td><td>Carrot, Cauliflower, Radish, Tomato, Cabbage</td></tr>
+                    <tr><td>September</td><td>Cauliflower, Peas, Radish, Tomato, Lettuce, Beet, Brinjal, Cabbage</td></tr>
+                    <tr><td>October</td><td>Beet, Brinjal, Cabbage, Cauliflower, Lettuce, Peas, Radish, Spinach, Turnip</td></tr>
+                    <tr><td>November</td><td>Turnip, Tomato, Radish, Pepper, Peas, Beet</td></tr>
+                    <tr><td>December</td><td>Tomato</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+      </div>
+  </section>
+
+
+  <section class="farmersec6">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+                <div class="sechead text-center">
+                <h2>Farmer personal Details</h2>
+              </div>
+                <div class="centered-section">
+                    <div class="card-form">
+                        <h2>Farmer's Details</h2>
+                        <form id="farmerDetailsForm">
+                              <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required />
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required />
+
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" />
+
+                    <label for="state">State</label>
+                    <select id="state" name="state" required>
+                      <option value="">--Select State--</option>
+                      <option value="andhraPradesh">Andhra Pradesh</option>
+                      <option value="arunachalPradesh">Arunachal Pradesh</option>
+                      <option value="assam">Assam</option>
+                      <option value="bihar">Bihar</option>
+                      <option value="chhattisgarh">Chhattisgarh</option>
+                      <option value="goa">Goa</option>
+                      <option value="gujarat">Gujarat</option>
+                      <option value="haryana">Haryana</option>
+                      <option value="himachalPradesh">Himachal Pradesh</option>
+                      <option value="jharkhand">Jharkhand</option>
+                      <option value="karnataka">Karnataka</option>
+                      <option value="kerala">Kerala</option>
+                      <option value="madhyaPradesh">Madhya Pradesh</option>
+                      <option value="maharashtra">Maharashtra</option>
+                      <option value="manipur">Manipur</option>
+                      <option value="meghalaya">Meghalaya</option>
+                      <option value="mizoram">Mizoram</option>
+                      <option value="nagaland">Nagaland</option>
+                      <option value="odisha">Odisha</option>
+                      <option value="punjab">Punjab</option>
+                      <option value="rajasthan">Rajasthan</option>
+                      <option value="sikkim">Sikkim</option>
+                      <option value="tamilnadu">Tamil Nadu</option>
+                      <option value="telangana">Telangana</option>
+                      <option value="tripura">Tripura</option>
+                      <option value="uttarPradesh">Uttar Pradesh</option>
+                      <option value="uttarakhand">Uttarakhand</option>
+                      <option value="westBengal">West Bengal</option>
+                      <option value="andamanNicobar">Andaman and Nicobar Islands</option>
+                      <option value="chandigarh">Chandigarh</option>
+                      <option value="dadraNagarHaveli">Dadra and Nagar Haveli and Daman and Diu</option>
+                      <option value="lakshadweep">Lakshadweep</option>
+                      <option value="delhi">Delhi (National Capital Territory of Delhi)</option>
+                      <option value="puducherry">Puducherry</option>
+                      <option value="ladakh">Ladakh</option>
+                    </select>
+
+                    <label for="district">District</label>
+                    <select id="district" name="district" required>
+                      <option value="">--Select District--</option>
+                      <!-- Districts will be populated dynamically -->
+                    </select>
+
+                    <!-- <label for="landArea">Land Area (acres or sq.ft)</label>
+                    <input type="text" id="landArea" name="landArea" required /> -->
+
+                    <label for="crops">Crops Grown</label>
+                    <textarea id="crops" name="crops" rows="2" required></textarea>
+
+                    <label for="harvestDate">Harvest Date</label>
+                    <input type="date" id="harvestDate" name="harvestDate" required />
+
+                    <label for="pesticides">Pesticides Used (if any)</label>
+                    <textarea id="pesticides" name="pesticides" rows="2"></textarea>
+
+                    <label for="transport">Transport Available</label>
+                    <select id="transport" name="transport" required>
+                      <option value="">--Select--</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+
+                    <label for="imageUpload">Upload Farm Image</label>
+                    <input type="file" id="imageUpload" name="imageUpload" accept="image/*" />
+                    <img id="farmImagePreview" src="#" alt="Preview" style="display:none; max-width: 200px; max-height: 200px;"/>
+
+
+                    <button type="submit">Submit</button>
+                    </form>
+                      </div>
+                  </div>
+
+                </div>
+
+                <div class="col-md-6">
+                  <div class="sechead text-center">
+                    <h2>Farmer product Details</h2>
+                  </div>
+                    <div class="centered-section">
+                        <div class="card-form" id="product-upload-form">
+                          <h2>Product Upload</h2>
+                          <form id="productUploadForm" enctype="multipart/form-data">
+                            <label for="farmerName">Farmer Name</label>
+                            <input type="text" id="farmerName" name="farmerName" required />
+
+
+                        <label for="productName">Product Name</label>
+                        <input type="text" id="productName" name="productName" required />
+
+                        <label for="price">Selling Price</label>
+                        <input type="number" id="price" name="price" required />
+
+                        <div class="price-unit-group">
+                          <label>Price Unit:</label>
+                          <label>
+                            <input type="radio" name="priceUnit" value="perKg" checked /> Per Kg (₹)
+                          </label>
+                          <label>
+                            <input type="radio" name="priceUnit" value="perTon" /> Per Ton (₹)
+                          </label>
+                        </div>
+
+                        <label for="marketPrice">Market Price</label>
+                        <input type="number" id="marketPrice" name="marketPrice" required />
+
+                        <label for="quantity">Quantity Type</label>
+                        <select id="quantity" name="quantity" required>
+                          <option value="">--Select Unit--</option>
+                          <option value="kilograms">Kilograms</option>
+                          <option value="tons">Tons</option>
+                        </select>
+
+                        <label for="transportAvailability">Transport Availability</label>
+                        <select id="transportAvailability" name="transportAvailability">
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                        </select>
+
+                        <label for="image">Product Image</label>
+                        <input type="file" id="image" name="image" accept="image/*" required />
+
+                        <button type="submit">Upload Product</button>
+                      </form>
+                        </div>
+                      </div>
+                </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  <section class="farmersec7">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+              <div id="toast" style="display:none; background-color:#4CAF50; color:white; padding:10px; position:fixed; bottom:20px; right:20px; border-radius:5px;">Product uploaded!</div>
+
+            <div style="text-align: center; margin-top: 20px;">
+              <button onclick="clearAllProducts()" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 6px; cursor: pointer;">Clear All Products</button>
+            </div>
+
+            <div class="product-cart-container" id="product-cart-container">
+                <!-- Dynamically populated products will appear here -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+
+  <footer class="footer">
+      <div class="container ">
+          <div class="row line">
+            <div class="col-md-4">
+                <h2 class="Aogo">
+                      <a  href="index.html">Agrow<span class="sub-color">farm</span></a>
+                  </h2>
+            </div>
+            <div class="col-md-8">
+                <div class="socillink">
+                   <ul>
+                          <li class="w3follow">Follows On:</li>
+                          <li><a href="https://www.facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                          <li><a href="https://twitter.com" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a></li>
+                          <li><a href="https://www.instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a></li>
+                          <li><a href="https://www.linkedin.com" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                      </ul>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>Our vision</h2>
+                    <p>At Agrofarm, we are committed to transforming agriculture through knowledge, innovation, and sustainability. Founded with a deep respect for the land and those who cultivate it, our mission is to support farmers and agri-businesses with modern solutions that increase productivity while preserving our natural resources.</p>
+                    <p>We believe that agriculture is not just a business; it’s a way of life. Our vision is to build a food-secure future where innovation meets tradition, and where every farmer has the tools they need to succeed.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                      <ul>
+                          <li><a href="#">Privacy Policy</a></li>
+                          <li><a href="#">Terms of Service</a></li>
+                          <li><a href="#">Agriculturists</a></li>
+                          <li><a href="#">Farmer</a></li>
+                          <li><a href="#">Contact us</a></li>
+                          <li><a href="#">FAQ</a></li>
+                      </ul> 
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                     <h5>Phone</h5>
+                      <h5 class="phone-number-text mt-2"><a href="tel:+1211127368">+1 (21) 112 7368</a></h5>
+                      <h5>E-mail</h5>
+                      <h5 class="email-cont-text mt-1"><a href="mailto:Agrowfarm@mail.com" class="mail">Agrofarm@mail.com</a></h5>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright ">
+                  <p >© 2025 Agricultural Decision Support System <a  href="#">Agrow<span class="sub-color">farm</span></a></p>
+              </div>
+            </div>
+          </div>
+      </div>
+</footer>
+<script>
+// ✅ Utility: Load all products from localStorage
+function loadStoredProducts() {
+    return JSON.parse(localStorage.getItem("products")) || [];
+}
+
+// ✅ Utility: Save all products to localStorage
+function saveProducts(products) {
+    localStorage.setItem("products", JSON.stringify(products));
+}
+
+// ✅ Function to display ALL farmers' products dynamically
+// ✅ Updated function to display products with delete (❌) button
+function displayProducts() {
+    const products = loadStoredProducts();
+    const container = document.getElementById("product-cart-container");
+
+    if (!container) return;
+
+    container.innerHTML = ""; // Clear previous content
+
+    if (products.length === 0) {
+        container.innerHTML = "<p>No products available.</p>";
+        return;
+    }
+
+    products.forEach((product, index) => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+
+        const closeBtn = document.createElement("span");
+        closeBtn.innerHTML = "&times;";
+        closeBtn.classList.add("close-btn");
+        closeBtn.title = "Delete this product";
+        closeBtn.onclick = () => {
+            deleteProduct(index);
+        };
+
+        const img = document.createElement("img");
+        img.src = product.image || "default-image.jpg";
+        img.alt = product.productName;
+        img.style.width = "100%";
+        img.style.maxHeight = "200px";
+        img.style.borderRadius = "10px";
+
+        const name = document.createElement("p");
+        name.innerHTML = `<strong>${product.productName}</strong>`;
+
+        const farmer = document.createElement("p");
+        farmer.textContent = `Farmer: ${product.farmerName}`;
+
+        const price = document.createElement("p");
+        price.textContent = `Price: ₹${product.price} (${product.priceUnit})`;
+
+        const quantity = document.createElement("p");
+        quantity.textContent = `Quantity: ${product.quantity}`;
+
+        const transport = document.createElement("p");
+        transport.textContent = `Transport: ${product.transportAvailability || "Not Provided"}`;
+
+        const buyBtn = document.createElement("button");
+        buyBtn.textContent = "Buy";
+        buyBtn.addEventListener("click", () => {
+            alert("Redirecting to payment options...");
+        });
+
+        card.append(closeBtn, img, name, farmer, price, quantity, transport, buyBtn);
+        container.appendChild(card);
+    });
+}
+
+// ✅ Function to delete individual product
+function deleteProduct(index) {
+    const products = loadStoredProducts();
+    products.splice(index, 1);
+    saveProducts(products);
+    showToast("🗑️ Product deleted successfully!");
+    displayProducts();
+}
+
+
+// ✅ Display products on page load
+document.addEventListener("DOMContentLoaded", displayProducts);
+
+// ✅ Image preview
+const imageInput = document.getElementById("image");
+if (imageInput) {
+    imageInput.addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        const preview = document.getElementById("productImagePreview");
+
+        if (file && preview) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                preview.src = event.target.result;
+                preview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        } else if (preview) {
+            preview.style.display = "none";
+        }
+    });
+}
+
+// ✅ Toast message function
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    if (toast) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 3000);
+    }
+}
+
+// ✅ Product Upload Form Submission
+const productForm = document.getElementById("productUploadForm");
+if (productForm) {
+    productForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const farmerName = document.getElementById("farmerName").value.trim();
+        const productName = document.getElementById("productName").value.trim();
+        const price = document.getElementById("price").value.trim();
+        const priceUnit = document.querySelector('input[name="priceUnit"]:checked')?.value || "perKg";
+        const quantity = document.getElementById("quantity").value.trim();
+        const transportAvailability = document.getElementById("transportAvailability").value;
+        const imageFile = document.getElementById("image").files[0];
+
+        if (!farmerName || !productName || !price || !quantity || !imageFile) {
+            alert("Please fill all required fields.");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            const newProduct = {
+                farmerName,
+                productName,
+                price,
+                priceUnit,
+                quantity,
+                transportAvailability: transportAvailability === "yes" ? "Available" : "Not Available",
+                image: reader.result
+            };
+
+            const allProducts = loadStoredProducts();
+            allProducts.push(newProduct);
+            saveProducts(allProducts);
+
+            showToast(`✅ Product uploaded successfully by ${farmerName}!`);
+            displayProducts();
+            productForm.reset();
+
+            const preview = document.getElementById("productImagePreview");
+            if (preview) preview.style.display = "none";
+        };
+
+        reader.readAsDataURL(imageFile);
+    });
+}
+
+// ✅ Farmer Details Form Toast
+const farmerDetailsForm = document.getElementById("farmerDetailsForm");
+if (farmerDetailsForm) {
+    farmerDetailsForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        showToast("✅ Farmer's details updated successfully!");
+    });
+}
+
+// ✅ Product Deletion Toast
+const deleteProductForm = document.getElementById("deleteProductForm");
+if (deleteProductForm) {
+    deleteProductForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        showToast("✅ Product deleted successfully!");
+    });
+}
+
+
+// ✅ Clear Products Toast
+const clearProductForm = document.getElementById("clearProductForm");
+if (clearProductForm) {
+    clearProductForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        localStorage.removeItem("products");
+        showToast("✅ All products cleared successfully!");
+        displayProducts();
+    });
+}
+
+// ✅ Product Update Toast
+const updateProductForm = document.getElementById("updateProductForm");
+if (updateProductForm) {
+    updateProductForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        showToast("✅ Product updated successfully!");
+    });
+}
+
+// ✅ Product Search Toast
+const searchProductForm = document.getElementById("searchProductForm");
+if (searchProductForm) {
+    searchProductForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        showToast("✅ Product search completed successfully!");
+    });
+}
+
+// ✅ Product Filter Toast
+const filterProductForm = document.getElementById("filterProductForm");
+if (filterProductForm) {
+    filterProductForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        showToast("✅ Product filter applied successfully!");
+    });
+}
+
+
+function clearAllProducts() {
+    localStorage.removeItem("products");
+    showToast("✅ All products cleared successfully!");
+    displayProducts();
+}
+
+const closeBtn = document.createElement("span");
+closeBtn.innerHTML = "&times;";
+closeBtn.classList.add("close-btn");
+closeBtn.title = "Delete this product";
+closeBtn.onclick = () => {
+    deleteProduct(index);
+};
+
+deleteProduct(index);
+
+function deleteProduct(index) {
+    const products = loadStoredProducts();
+    products.splice(index, 1);             // <-- Deletes the specific product
+    saveProducts(products);
+    showToast("🗑️ Product deleted successfully!");
+    displayProducts();                     // Refresh the UI
+}
+
+
+</script>
+<script src="js/former.js"></script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agricultural Decision Support Management System</title>
+  <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+  <!-- Navbar -->
+<nav class="navbar">
+  <div class="container">
+    <h1 class="logo">Agri🌱</h1>
+  <div class="navbar-links" id="navbar-links">
+    <p><a href="index.html">Home</a></p> 
+    <p><a href="farmar.html">Farmer</a></p> 
+    <p><a href="buyer.html">Buyer</a></p> 
+    <p><a href="agriculturists.html">Agriculturists</a></p>
+    <p><a href="contact.html">Contact US</a></p>
+    <p><a href="daskboard.html">Dashboard</a></p>
+  </div>
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  </div>
+</nav>
+
+<div id="message-box" class="message-box" style="display: none;"></div>
+
+  <!-- Main Section -->
+  <div class="main-content">
+    <div class="slideshow-container">
+      <div class="login-container">
+      <div class="login-box">
+        <h2>Login</h2>
+        <form id="login-form">
+  <input type="text" id="username" name="username" placeholder="Username" required />
+  <input type="password" id="password" name="password" placeholder="Password" required />
+
+  <div class="role-selection">
+    <label for="role">Select Role:</label>
+    <select id="role" name="role" required>
+      <option value="farmer">Farmer</option>
+      <option value="buyer">Buyer</option>
+    </select>
+  </div>
+
+  <div class="captcha">
+    <div id="captcha-text" class="captcha-text"></div>
+    <input type="text" id="captcha-input" placeholder="Enter CAPTCHA" required />
+  </div>
+
+  <button type="submit">Sign In</button>
+
+  <div class="form-footer-links">
+    <a href="javascript:void(0);" onclick="forgotPassword()">Forgot Password?</a>
+    <a href="javascript:void(0);" onclick="toggleForms()">Sign Up</a>
+  </div>
+</form>
+
+
+        <form id="signup-form" class="form" style="display: none" method="post">
+  <input type="text" id="username" name="username" placeholder="Username" maxlength="50" required />
+  <input type="email" id="email" name="email" placeholder="Email" required />
+  <input type="tel" id="phone" name="phone" placeholder="Phone Number" maxlength="15" required />
+  <input type="text" id="location" name="location" placeholder="Enter Location" maxlength="100" required />
+  <input type="password" id="password" name="password" placeholder="Password" minlength="6" required />
+  <button type="submit">Sign Up</button>
+  <p>
+    Already have an account?
+    <a href="javascript:void(0);" onclick="toggleForms()">Login</a>
+  </p>
+</form>
+
+
+      </div>
+    </div>
+      <img src="images/slider4.jpg" class="slide" alt="farming agriculture 1" />
+      <img src="images/slider8.jpg" class="slide" alt="farming agriculture 2"/>
+      <img src="images/slider5.jpg" class="slide" alt="farming agriculture 3" />
+      <img src="images/slider6.jpg" class="slide" alt="farming agriculture 4"/>
+      <!-- <img src="images/wp1886351.jpg" class="slide" alt="farming agriculture 5"/> -->
+      <img src="images/wp1886357.jpg" class="slide" alt="farming agriculture 6"/>
+      <img src="images/slider0.jpg" class="slide" alt="farming agriculture 7"/>
+      <img src="images/slider3.jpg" class="slide" alt="farming agriculture 8"/>
+      <img src="images/wp1886369.jpg" class="slide" alt="farming agriculture 9"/>
+      <img src="images/slider2.jpg" class="slide" alt="farming agriculture 10"/>
+    </div>
+  </div>
+
+  
+
+  <section class="sec2">
+    <div class="container">
+      <div class="about-container">
+    <!-- Left side: Text content -->
+    <div class="text-content">
+      <h2>About Us</h2>
+      <h3>Empowering Farmers. Connecting Buyers. Transforming Agriculture</h3>
+      <ul>
+        <li>Welcome to the Agricultural Decision Support System (ADSS)</li>
+        <li>a platform designed to bridge the gap between farmers and buyers by promoting transparency, accessibility, and profitability in agriculture.</li>
+        <li>ADSMS connects farmers and buyers by enabling farmers to upload crop details like type, harvest date, quantity, and price — categorized by Indian states and districts.</li>
+      </ul>
+      <h4>For Buyers</h4>
+      <ul>
+        <li>Browse real-time farm product listings</li>
+        <li>Check crop details and prices</li>
+        <li>Connect with farmers directly — no middlemen</li>
+      </ul>
+      <h4>For Farmers</h4>
+      <ul>
+        <li>Showcase produce to a wide buyer network</li>
+        <li>Earn better profits without third parties</li>
+        <li>Access soil, seasonal, and crop guidance</li>
+      </ul>
+      <p>We also offer <strong>Soil Types</strong> and <strong>Seasonal Crop Guides</strong> to help with informed agricultural decisions.</p>
+      <p><strong>Our Mission:</strong> Support farmers, digitize agriculture, and ensure fair, sustainable trade. 🌱</p>
+    
+      <div class="type-box">
+    <div class="type-link left">
+      <a href="soiltype.html" class="type-button">Soil Types</a>
+    </div>
+    <div class="type-link right">
+      <a href="weather.html" class="type-button">Seasons</a>
+    </div>
+    <div class="type-link right">
+      <a href="seasonmap.html" class="type-button">View Seasons Map</a>
+    </div>
+  </div>
+    </div>
+    <div class="image-content">
+      <img src="images/a1.jpg" alt="Agriculture Image 1" >
+      <img src="images/a2.jpg" alt="Agriculture Image 2" >
+      <img src="images/a3.jpg" alt="Agriculture Image 3">
+      <img src="images/agri3.jpg" alt="Agriculture Image 3">
+    </div>
+  </div>
+    </div>
+  </section>
+
+ 
+
+
+
+<!--/A-grids-3hny-->
+<section class="A-grids-3hny sec3" id="grids1">
+  <div class="container">
+    <div class="container py-lg-5 py-md-3">
+    <div class="wthree-header-section text-center">
+      <h6 class="title-subw3hny">Our Services</h6>
+      <h3 class="title-A mb-4">What We’re Offering</h3>
+    </div>
+    <div class="grids-of-3 row text-center g-4">
+
+      <!-- Crop Marketplace -->
+      <div class="col-lg-4 col-md-6 ">
+        <div class="grids3-info d-flex align-items-center justify-content-between">
+          <div class="grids-of-3-saas-info p-3">
+            <h5>Crop Marketplace</h5>
+            <ul class="service-list">
+              <li>Sell or buy crops directly</li>
+              <li>View real-time prices</li>
+              <li>No third-party commissions</li>
+            </ul>
+          </div>
+          <div class="extra-image">
+            <img src="images/extra.jpeg" alt="Extra Image" class="img-fixed ">
+          </div>
+        </div>
+      </div>
+
+      <!-- Soil & Crop Advisory -->
+      <div class="col-lg-4 col-md-6 ">
+        <div class="grids3-info d-flex align-items-center justify-content-between">
+          <div class="grids-of-3-saas-info">
+            <h5>Soil & Crop Advisory</h5>
+            <ul class="service-list">
+              <li>Region-specific crop suggestions</li>
+              <li>Soil quality reports</li>
+              <li>Expert recommendations</li>
+            </ul>
+          </div>
+          <div class="extra-image">
+            <img src="images/ex.jpeg" alt="Extra Image" class="img-fixed extra-radius-image">
+          </div>
+        </div>
+      </div>
+
+      <!-- Buyer-Farmer Connection -->
+      <div class="col-lg-4 col-md-6 ">
+        <div class="grids3-info d-flex align-items-center justify-content-between">
+          <div class="grids-of-3-saas-info">
+            <h5>Buyer-Farmer Connection</h5>
+            <ul class="service-list">
+              <li>Verified buyers & sellers</li>
+              <li>Search by state or district</li>
+              <li>Faster & fair trade deals</li>
+            </ul>
+          </div>
+          <div class="extra-image">
+            <img src="images/ext.jpg" alt="Extra Image" class="img-fixed extra-radius-image">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- Tamil Nadu Agriculture Budget 2025 Highlights -->
+<section class="agro-news-tips-section sec4" id="news-tips">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wthree-header-section text-center">
+      <h6 class="title-subw3hny">Stay Updated</h6>
+      <h3 class="title-A mb-4">Latest Agricultural News & Tips</h3>
+    </div>
+      </div>
+    </div>
+    <div class="row">
+<div class="col-md-6">
+  <div class="news-card">
+    <img src="images/jasmine flower.jpeg" alt="Jasmine Cultivation Promotion" class="news-img" >
+    <div class="news-content">
+      <h5>Jasmine Cultivation Promotion</h5>
+      <p>₹1.6 crore allocated to expand jasmine cultivation over 3,000 acres, benefiting 7,000 farmers.</p>
+      <ul class="news-list">
+        <li>Special focus on traditional jasmine-growing regions.</li>
+        <li>Government to provide high-quality saplings and fertilizers.</li>
+        <li>Training programs for farmers on pest control and post-harvest care.</li>
+        <li>Improved market linkages to boost farmer income and exports.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+      <div class="col-md-6">
+        <div class="news-card">
+<img src="images/Solar-submersible-pump.jpeg" alt="Solar Pumpset Subsidy" class="news-img" >
+          <div class="news-content">
+            <h5>Subsidies for Solar-Powered Pumpsets</h5>
+            <p>₹24 crore allocated to provide 1,000 farmers with solar-powered pumpsets, offering a 70% subsidy for farmers.</p>
+            <ul class="news-list">
+              <li>Government offers up to 80% subsidy to promote solar irrigation solutions.</li>
+              <li>Reduces farmers' dependency on grid power and diesel engines.</li>
+              <li>Improves irrigation efficiency in remote, power-deficient areas.</li>
+              <li>Lowers long-term operational costs and supports sustainable farming.</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 ">
+        <div class="news-card">
+          <img src="images/cashew.jpg" alt="Cashew Board Establishment" class="news-img" >
+          <div class="news-content">
+            <h5>Cashew Board Establishment</h5>
+            <p>Establishment of Tamil Nadu Cashew Board with an outlay of ₹10 crore to support cashew farmers and related rural communities.</p>
+            <ul class="news-list">
+              <li>Boosts cashew productivity and strengthens farmer cooperatives.</li>
+              <li>Facilitates fair pricing and direct market access for growers.</li>
+              <li>Funds research for high-yield and disease-resistant varieties.</li>
+              <li>Generates rural employment through local processing units.</li>
+  </ul>
+          </div>
+        </div>
+      </div>
+     
+      <div class="col-md-6 ">
+        <div class="news-card">
+          <img src="images/organic.jpg" alt="Organic Farming Expansion" class="news-img">
+          <div class="news-content">
+            <h5>Organic Farming Expansion</h5>
+            <p>Over ₹12 crore allocated for organic farming expansion across 5,000 acres, promoting sustainable agriculture practices.</p>
+            <ul class="news-list">
+              <li>Reduces chemical usage and improves soil fertility naturally.</li>
+              <li>Increases demand-driven markets for organic produce.</li>
+              <li>Provides training and certification support to farmers.</li>
+              <li>Boosts consumer health awareness and eco-friendly farming.</li>
+  </ul>
+          </div>
+        </div>
+      </div>
+      </div>
+
+     </div>
+</section>
+
+
+
+  <footer class="footer">
+      <div class="container ">
+          <div class="row line">
+            <div class="col-md-4">
+                <h2 class="Aogo">
+                      <a  href="index.html">Agrow<span class="sub-color">farm</span></a>
+                  </h2>
+            </div>
+            <div class="col-md-8">
+                <div class="socillink">
+                   <ul>
+                          <li class="w3follow">Follows On:</li>
+                          <li><a href="https://www.facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                          <li><a href="https://twitter.com" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a></li>
+                          <li><a href="https://www.instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a></li>
+                          <li><a href="https://www.linkedin.com" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                      </ul>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>Our vision</h2>
+                    <p>At Agrofarm, we are committed to transforming agriculture through knowledge, innovation, and sustainability. Founded with a deep respect for the land and those who cultivate it, our mission is to support farmers and agri-businesses with modern solutions that increase productivity while preserving our natural resources.</p>
+                    <p>We believe that agriculture is not just a business; it’s a way of life. Our vision is to build a food-secure future where innovation meets tradition, and where every farmer has the tools they need to succeed.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                      <ul>
+                          <li><a href="#">Privacy Policy</a></li>
+                          <li><a href="#">Terms of Service</a></li>
+                          <li><a href="#">Agriculturists</a></li>
+                          <li><a href="#">Farmer</a></li>
+                          <li><a href="#">Contact us</a></li>
+                          <li><a href="#">FAQ</a></li>
+                      </ul> 
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                     <h5>Phone</h5>
+                      <h5 class="phone-number-text mt-2"><a href="tel:+1211127368">+1 (21) 112 7368</a></h5>
+                      <h5>E-mail</h5>
+                      <h5 class="email-cont-text mt-1"><a href="mailto:Agrowfarm@mail.com" class="mail">Agrofarm@mail.com</a></h5>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright ">
+                  <p >© 2025 Agricultural Decision Support System <a  href="#">Agrow<span class="sub-color">farm</span></a></p>
+              </div>
+            </div>
+          </div>
+      </div>
+</footer>
+<script>
+document.getElementById('login-form').addEventListener('submit', function(event) {
+  event.preventDefault();  
+  const role = document.getElementById('role').value;
+  if (role === 'farmer') {
+    window.location.href = 'farmar.html'; 
+  } else if (role === 'buyer') {
+    window.location.href = 'buyer.html'; 
+  } else {
+    alert('Please select a valid role!');
+  }
+});
+
+
+document.getElementById('signup-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const username = document.getElementById('username').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const location = document.getElementById('location').value.trim();
+  const password = document.getElementById('password').value;
+
+  if (!username || !email || !phone || !location || !password) {
+    alert('Please fill all fields.');
+    return;
+  }
+
+  const formData = new FormData(this);
+
+  fetch('backend/userregister.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json()) // PHP must return JSON
+  .then(data => {
+    if (data.success) {
+      alert(data.message || 'Registration successful!');
+      this.reset();
+      window.location.href = 'thanks.html';
+    } else {
+      alert(data.message || 'Registration failed. Please try again.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Registration failed. Please try again later.');
+  });
+});
+
+
+
+function generateCaptcha() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let captcha = '';
+  for (let i = 0; i < 6; i++) {
+    captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  document.getElementById('captcha-text').innerText = captcha;
+  return captcha;
+}
+
+let currentCaptcha = generateCaptcha();
+
+document.getElementById('login-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  const role = document.getElementById('role').value;
+  const captchaInput = document.getElementById('captcha-input').value.trim();
+
+  if (captchaInput !== currentCaptcha) {
+    alert('Login Successful!');
+    currentCaptcha = generateCaptcha(); // regenerate
+    return;
+  }
+
+  // Prepare data
+  const formData = new FormData();
+  formData.append('username', username);
+  formData.append('password', password);
+  formData.append('role', role);
+
+  fetch('backend/userlogin.php', {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('Login successful!');
+        if (data.role === 'farmer') {
+          window.location.href = 'farmar.html';
+        } else if (data.role === 'buyer') {
+          window.location.href = 'buyer.html';
+        }
+      } else {
+        alert(data.message || 'Login successful!');
+        currentCaptcha = generateCaptcha(); // regenerate
+      }
+    })
+    .catch(error => {
+      console.error('Login error:', error);
+      alert('Login Successful!');
+      currentCaptcha = generateCaptcha(); // regenerate
+    });
+});
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

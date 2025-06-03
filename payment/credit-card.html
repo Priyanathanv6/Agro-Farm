@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Credit Card Payment</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f0fdf4, #e0f7e9);
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Container Box */
+    .container {
+      max-width: 420px;
+      width: 100%;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Headline */
+    h2 {
+      margin-bottom: 20px;
+      color: #2d6a4f;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Input Fields */
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #2d6a4f;
+      outline: none;
+      background-color: #f6fff9;
+    }
+
+    /* Submit Button */
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #2d6a4f, #40916c);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #1b4332, #2d6a4f);
+      transform: scale(1.02);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+
+      input,
+      button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pay with Credit Card</h2>
+    <form onsubmit="event.preventDefault(); alert('Credit Card Payment Successful!');">
+      <input type="text" placeholder="Card Number" required />
+      <input type="text" placeholder="Cardholder Name" required />
+      <input type="text" placeholder="Expiry Date (MM/YY)" required />
+      <input type="text" placeholder="CVV" required />
+      <button type="submit">Pay ₹100</button>
+    </form>
+  </div>
+</body>
+</html>

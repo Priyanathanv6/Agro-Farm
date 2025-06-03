@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Netbanking Payment</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e6f0e6, #f9fbf9);
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Container */
+    .container {
+      max-width: 420px;
+      width: 100%;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading */
+    h2 {
+      margin-bottom: 20px;
+      color: #2a6b2a;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Select and Input */
+    select, input {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: 1px solid #a4c3a2;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+      background: #f4faf4;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      color: #2a6b2a;
+    }
+
+    select:focus, input:focus {
+      border-color: #2a6b2a;
+      outline: none;
+      background-color: #e0f0e0;
+    }
+
+    /* Button */
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #2a6b2a, #4b914b);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #1d461d, #2a6b2a);
+      transform: scale(1.03);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+
+      select, input, button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Pay with Netbanking</h2>
+    <form onsubmit="event.preventDefault(); alert('Netbanking Payment Successful!');">
+      <select required>
+        <option value="" disabled selected>Select Your Bank</option>
+        <option value="SBI">State Bank of India</option>
+        <option value="HDFC">HDFC Bank</option>
+        <option value="ICICI">ICICI Bank</option>
+        <option value="AXIS">Axis Bank</option>
+      </select>
+      <input type="text" placeholder="User ID" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Pay ₹100</button>
+    </form>
+  </div>
+
+</body>
+</html>

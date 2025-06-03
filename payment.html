@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agricultural Decision Support Management System</title>
+  <link rel="stylesheet" href="agrofarmer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">Agri🌱</h1>
+    <div class="navbar-links" id="navbar-links">
+      <p><a href="agroindex.html">Home</a></p>
+      <p><a href="agrofarmer.html">Farmer</a></p>
+      <p><a href="buyer.html">Buyer</a></p>
+      <p><a href="agriculturist.html">Agriculturists</a></p>
+      <p><a href="admin/admin.html">Admin</a></p>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <header class="main-heading">
+    Agricultural Decision Support System
+  </header>
+  <style>
+    body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.container {
+  max-width: 500px;
+  margin-top: 100px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
+    .product-details {
+      margin-bottom: 30px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+
+    .product-details p {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .product-details span {
+      font-weight: bold;
+    }
+
+    #buy-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      font-size: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      margin-bottom: 20px;
+      transition: background-color 0.3s;
+    }
+
+    #buy-button:hover {
+      background-color: #45a049;
+    }
+
+    h3 {
+      font-size: 22px;
+      margin-top: 30px;
+      color: #222;
+    }
+
+    .payment-methods {
+      list-style-type: none;
+      padding: 0;
+      display: none; /* Initially hidden */
+    }
+
+    .payment-methods li {
+      margin: 10px 0;
+    }
+
+    .payment-button {
+      background-color: #0c8b27;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    .payment-button:hover {
+      background-color: #0be70e;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      #buy-button, .payment-button {
+        font-size: 16px;
+        padding: 12px 18px;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="product-details">
+      <img id="product-image" src="" alt="Product Image">
+      <p><span>Product:</span> <span id="product-name"></span></p>
+      <p><span>Farmer:</span> <span id="farmer-name"></span></p>
+      <p><span>Price:</span> ₹<span id="product-price"></span></p>
+      <p><span>Quantity Available:</span> <span id="product-quantity"></span></p>
+      <p><span>Transport Available:</span> <span id="transport-available"></span></p>
+    </div>
+    
+
+    <button id="buy-button" onclick="showPaymentMethods()">Buy</button>
+
+    <h3>Select Payment Method</h3>
+    <ul class="payment-methods">
+      <li><button class="payment-button" onclick="redirectToGooglePay()">Google Pay</button></li>
+      <li><button class="payment-button" onclick="redirectToPhonePe()">PhonePe</button></li>
+      <li><button class="payment-button" onclick="redirectToPaytm()">Paytm</button></li>
+      <li><button class="payment-button" onclick="redirectToNetBanking()">Net Banking</button></li>
+      <li><button class="payment-button" onclick="redirectToCreditCard()">Credit Card</button></li>
+      <li><button class="payment-button" onclick="redirectToDebitCard()">Debit Card</button></li>
+    </ul>
+  </div>
+
+  <script>
+   // Get query parameters from URL
+const urlParams = new URLSearchParams(window.location.search);
+const productName = urlParams.get('productName');
+const productPrice = urlParams.get('price');
+const farmerName = urlParams.get('farmerName');
+
+// Insert the data into page
+document.getElementById('product-name').textContent = productName || "N/A";
+document.getElementById('product-price').textContent = productPrice || "0";
+document.getElementById('farmer-name').textContent = farmerName || "Unknown";
+
+
+    // Show payment methods
+    function showPaymentMethods() {
+      document.querySelector('.payment-methods').style.display = 'block';
+      document.getElementById('buy-button').style.display = 'none';
+    }
+
+    // Redirects
+    function redirectToGooglePay() {
+      window.open("https://pay.google.com", "_blank");
+    }
+
+    function redirectToPhonePe() {
+      window.open("https://www.phonepe.com", "_blank");
+    }
+
+    function redirectToPaytm() {
+      window.open("https://paytm.com", "_blank");
+    }
+
+    function redirectToNetBanking() {
+      window.open("https://www.yourbank.com/net-banking", "_blank");
+    }
+
+    function redirectToCreditCard() {
+      window.open("https://www.yourbank.com/credit-card", "_blank");
+    }
+
+    function redirectToDebitCard() {
+      window.open("https://www.yourbank.com/debit-card", "_blank");
+    }
+  </script>
+</body>
+</html>

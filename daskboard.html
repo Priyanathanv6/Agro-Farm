@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agricultural Decision Support Management System</title>
+  <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/daskboard.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="container">
+    <h1 class="logo">Agri🌱</h1>
+  <div class="navbar-links" id="navbar-links">
+    <p><a href="index.html">Home</a></p> 
+    <p><a href="farmar.html">Farmer</a></p> 
+    <p><a href="buyer.html">Buyer</a></p> 
+    <p><a href="agriculturists.html">Agriculturists</a></p>
+    <p><a href="contact.html">Contact US</a></p>
+  </div>
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  </div>
+</nav>
+<!-- <div id="message-box" class="message-box" style="display: none;"></div>
+
+  <section class="agristsec1">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+                <div class="head">
+               <h2>Feel Free drop you Queries...!</h2>
+                <p>popular and skilled persons to help the better work flow</p>
+                </div>
+            </div>
+          </div> -->
+
+         <div class="container py-5">
+           <div class="row">
+                <div class="col-md-12">
+                    <h1 class="py-5">🌿 Agro Friendly Dashboard 🌿</h1>
+
+                    <div class="boxes">
+                      <!-- Farmer Info -->
+                      <div class="box" id="farmerBox">
+                        <h2>👨‍🌾 Farmer Info</h2>
+                        <p>Total Registered Farmers: <span id="totalFarmers">--</span></p>
+                        <p>Farmers with Products: <span id="uploadedFarmers">--</span></p>
+                        <p>Total Earnings: ₹<span id="totalEarnings">--</span></p>
+                      </div>
+
+                      <!-- Product Info -->
+                      <div class="box" id="productBox">
+                        <h2>🧺 Product Info</h2>
+                        <p>Total Products: <span id="totalProducts">--</span></p>
+                        <p>Organic Products: <span id="organicProducts">--</span></p>
+                        <p>Non-Organic Products: <span id="nonOrganicProducts">--</span></p>
+                      </div>
+
+                      <!-- Market Info -->
+                      <div class="box" id="marketBox">
+                        <h2>📈 Market Trends</h2>
+                        <p>Highest Demand Crop: <span id="topCrop">--</span></p>
+                        <p>Current Market Price: <span id="marketPriceIndex">--</span></p>
+                        <p>Last Updated: <span id="lastUpdated">--</span></p>
+                      </div>
+                    </div>
+
+                    <!-- Product List -->
+                    <div class="details-section">
+                      <h2>📦 Products Uploaded by Farmers</h2>
+                      <table class="product-table" id="productTable" aria-label="List of farmer products">
+                        <thead>
+                          <tr>
+                            <th>Product Name</th>
+                            <th>Farmer</th>
+                            <th>Category</th>
+                            <th>Price (₹/kg)</th>
+                            <th>Organic</th>
+                            <th>Harvest Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Product rows inserted by JS -->
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <!-- Product Details Popup -->
+                    <div id="product-details-container" role="dialog" aria-modal="true" aria-labelledby="productDetailsTitle" tabindex="-1">
+                      <button aria-label="Close product details" id="closeDetailsBtn">&times;</button>
+                      <h3 id="productDetailsTitle">Product Name</h3>
+                      <img src="" alt="Product Image" id="productDetailsImg" style="width: 100%; max-width: 400px; border-radius: 12px; margin-bottom: 15px;" />
+                      <p><strong>Farmer:</strong> <span id="productFarmer"></span></p>
+                      <p><strong>Category:</strong> <span id="productCategory"></span></p>
+                      <p><strong>Price:</strong> ₹<span id="productPrice"></span> per kg</p>
+                      <p><strong>Organic:</strong> <span id="productOrganic"></span></p>
+                      <p><strong>Harvest Date:</strong> <span id="productHarvestDate"></span></p>
+                      <p><strong>Description:</strong></p>
+                      <p id="productDescription" style="line-height:1.5;"></p>
+                    </div>
+                  </div>
+
+                  <!-- Logout Button (Top-Right Corner) -->
+                <div class="logout-container">
+                  <button class="logout-btn" onclick="logout()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png" alt="Logout Icon" class="logout-icon">
+                    Logout
+                  </button>
+                </div>
+          </div>
+         </div>
+    </section>
+
+
+
+  <footer class="footer">
+      <div class="container ">
+          <div class="row line">
+            <div class="col-md-4">
+                <h2 class="Aogo">
+                      <a  href="index.html">Agrow<span class="sub-color">farm</span></a>
+                  </h2>
+            </div>
+            <div class="col-md-8">
+                <div class="socillink">
+                   <ul>
+                          <li class="w3follow">Follows On:</li>
+                          <li><a href="https://www.facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                          <li><a href="https://twitter.com" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a></li>
+                          <li><a href="https://www.instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a></li>
+                          <li><a href="https://www.linkedin.com" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                      </ul>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>Our vision</h2>
+                    <p>At Agrofarm, we are committed to transforming agriculture through knowledge, innovation, and sustainability. Founded with a deep respect for the land and those who cultivate it, our mission is to support farmers and agri-businesses with modern solutions that increase productivity while preserving our natural resources.</p>
+                    <p>We believe that agriculture is not just a business; it’s a way of life. Our vision is to build a food-secure future where innovation meets tradition, and where every farmer has the tools they need to succeed.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                      <ul>
+                          <li><a href="#">Privacy Policy</a></li>
+                          <li><a href="#">Terms of Service</a></li>
+                          <li><a href="#">Agriculturists</a></li>
+                          <li><a href="#">Farmer</a></li>
+                          <li><a href="#">Contact us</a></li>
+                          <li><a href="#">FAQ</a></li>
+                      </ul> 
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="footer-content py-3">
+                    <h2>our Support links</h2>
+                     <h5>Phone</h5>
+                      <h5 class="phone-number-text mt-2"><a href="tel:+1211127368">+1 (21) 112 7368</a></h5>
+                      <h5>E-mail</h5>
+                      <h5 class="email-cont-text mt-1"><a href="mailto:Agrowfarm@mail.com" class="mail">Agrofarm@mail.com</a></h5>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright ">
+                  <p >© 2025 Agricultural Decision Support System <a  href="#">Agrow<span class="sub-color">farm</span></a></p>
+              </div>
+            </div>
+          </div>
+      </div>
+</footer>
+ 
+
+<script>
+  // Sample data arrays for dashboard metrics and products
+  const farmers = [
+  { id: 1, name: "Ramesh Kumar", earnings: 1200 },
+  { id: 2, name: "Sita Devi", earnings: 850 },
+  { id: 3, name: "Mohammed Ali", earnings: 1570 },
+  { id: 4, name: "Lakshmi Narayan", earnings: 1330 },
+  { id: 5, name: "Rajesh Sharma", earnings: 21000 },
+  { id: 6, name: "Meena Reddy", earnings: 900 },
+  { id: 7, name: "Sunil Patil", earnings: 1750 },
+  { id: 8, name: "Anita Joshi", earnings: 7200 },
+  { id: 9, name: "Vijay Singh", earnings: 195 },
+  { id: 10, name: "Preeti Gupta", earnings: 6800 },
+  { id: 11, name: "Arun Das", earnings: 1450 },
+  { id: 12, name: "Kavita Singh", earnings: 6200 },
+  { id: 13, name: "Manoj Yadav", earnings: 1600 },
+  { id: 14, name: "Nisha Patel", earnings: 8300 },
+  { id: 15, name: "Rajiv Verma", earnings: 140 },
+  { id: 16, name: "Sonal Mehta", earnings: 7100 },
+  { id: 17, name: "Deepak Rao", earnings: 1900 },
+  { id: 18, name: "Lata Sharma", earnings: 4800 },
+  { id: 19, name: "Pankaj Kumar", earnings: 17000 },
+  { id: 20, name: "Rita Desai", earnings: 7700 }
+];
+
+  const products =[
+  {
+    "id": 101,
+    "name": "Organic Tomato",
+    "farmerId": 1,
+    "category": "Vegetables",
+    "pricePerKg": 45,
+    "isOrganic": true,
+    "harvestDate": "2025-06-12",
+    "description": "Fresh organic tomatoes grown without chemicals.",
+    "imageUrl": "images/OrganicTomato.jpg"
+  },
+  {
+    "id": 102,
+    "name": "Potato",
+    "farmerId": 2,
+    "category": "Vegetables",
+    "pricePerKg": 20,
+    "isOrganic": false,
+    "harvestDate": "2025-06-10",
+    "description": "High-quality potatoes suitable for all cooking needs.",
+    "imageUrl": "images/potatoes.jpg"
+  },
+  {
+    "id": 103,
+    "name": "Organic Mango",
+    "farmerId": 3,
+    "category": "Fruits",
+    "pricePerKg": 120,
+    "isOrganic": true,
+    "harvestDate": "2025-05-25",
+    "description": "Sweet and juicy organic mangoes, freshly picked.",
+    "imageUrl": "images/Mango.jpg"
+  },
+  {
+    "id": 104,
+    "name": "Wheat",
+    "farmerId": 4,
+    "category": "Grains",
+    "pricePerKg": 30,
+    "isOrganic": false,
+    "harvestDate": "2025-04-20",
+    "description": "Premium quality wheat grains for your daily baking.",
+    "imageUrl": "images/wheat.jpg"
+  },
+  {
+    "id": 105,
+    "name": "Organic Spinach",
+    "farmerId": 1,
+    "category": "Vegetables",
+    "pricePerKg": 55,
+    "isOrganic": true,
+    "harvestDate": "2025-06-15",
+    "description": "Freshly harvested organic spinach rich in iron.",
+    "imageUrl": "images/spinach.jpg"
+  },
+  {
+    "id": 106,
+    "name": "Banana",
+    "farmerId": 2,
+    "category": "Fruits",
+    "pricePerKg": 35,
+    "isOrganic": false,
+    "harvestDate": "2025-06-05",
+    "description": "Sweet bananas packed with potassium.",
+    "imageUrl": "images/banana.jpg"
+  },
+  {
+    "id": 107,
+    "name": "Organic Carrot",
+    "farmerId": 3,
+    "category": "Vegetables",
+    "pricePerKg": 60,
+    "isOrganic": true,
+    "harvestDate": "2025-06-08",
+    "description": "Crunchy organic carrots rich in vitamin A.",
+    "imageUrl": "images/carrot.jpg"
+  },
+  {
+    "id": 108,
+    "name": "Paddy",
+    "farmerId": 4,
+    "category": "Grains",
+    "pricePerKg": 40,
+    "isOrganic": false,
+    "harvestDate": "2025-05-30",
+    "description": "High-quality rice with excellent aroma and texture.",
+    "imageUrl": "images/paddy.jpg"
+  },
+  {
+    "id": 109,
+    "name": "Organic Apple",
+    "farmerId": 1,
+    "category": "Fruits",
+    "pricePerKg": 150,
+    "isOrganic": true,
+    "harvestDate": "2025-06-01",
+    "description": "Crisp and juicy organic apples.",
+    "imageUrl": "images/apple.jpg"
+  },
+  {
+    "id": 110,
+    "name": "Corn",
+    "farmerId": 2,
+    "category": "Grains",
+    "pricePerKg": 25,
+    "isOrganic": false,
+    "harvestDate": "2025-06-03",
+    "description": "Sweet corn perfect for grilling or boiling.",
+    "imageUrl": "images/corn.jpg"
+  },
+  {
+    "id": 111,
+    "name": "Organic Green Beans",
+    "farmerId": 3,
+    "category": "Vegetables",
+    "pricePerKg": 70,
+    "isOrganic": true,
+    "harvestDate": "2025-06-11",
+    "description": "Fresh green beans grown organically.",
+    "imageUrl": "images/beans.jpg"
+  },
+  {
+    "id": 112,
+    "name": "Onion",
+    "farmerId": 4,
+    "category": "Vegetables",
+    "pricePerKg": 22,
+    "isOrganic": false,
+    "harvestDate": "2025-06-07",
+    "description": "Red onions ideal for cooking and salads.",
+    "imageUrl": "images/onion.jpg"
+  },
+  {
+    "id": 113,
+    "name": "Organic Garlic",
+    "farmerId": 1,
+    "category": "Vegetables",
+    "pricePerKg": 80,
+    "isOrganic": true,
+    "harvestDate": "2025-06-04",
+    "description": "Aromatic organic garlic bulbs.",
+    "imageUrl": "images/garlic.jpg"
+  },
+  {
+    "id": 114,
+    "name": "Orange",
+    "farmerId": 2,
+    "category": "Fruits",
+    "pricePerKg": 90,
+    "isOrganic": false,
+    "harvestDate": "2025-05-28",
+    "description": "Fresh juicy oranges rich in vitamin C.",
+    "imageUrl": "images/orange.jpg"
+  },
+  {
+    "id": 115,
+    "name": "Barley",
+    "farmerId": 3,
+    "category": "Grains",
+    "pricePerKg": 28,
+    "isOrganic": false,
+    "harvestDate": "2025-05-20",
+    "description": "High-fiber barley grains for healthy meals.",
+    "imageUrl": "images/barley.jpg"
+  },
+  {
+    "id": 116,
+    "name": "Organic Cucumber",
+    "farmerId": 4,
+    "category": "Vegetables",
+    "pricePerKg": 50,
+    "isOrganic": true,
+    "harvestDate": "2025-06-09",
+    "description": "Fresh and crisp organic cucumbers.",
+    "imageUrl": "images/cucumber.jpg"
+  },
+  {
+    "id": 117,
+    "name": "Strawberry",
+    "farmerId": 1,
+    "category": "Fruits",
+    "pricePerKg": 200,
+    "isOrganic": false,
+    "harvestDate": "2025-06-06",
+    "description": "Sweet and fresh strawberries.",
+    "imageUrl": "images/strawberry.jpg"
+  },
+  {
+    "id": 118,
+    "name": "Peas",
+    "farmerId": 2,
+    "category": "Vegetables",
+    "pricePerKg": 38,
+    "isOrganic": false,
+    "harvestDate": "2025-06-12",
+    "description": "Green peas perfect for cooking and snacking.",
+    "imageUrl": "images/peas.jpg"
+  },
+  {
+    "id": 119,
+    "name": "Organic Sweet Potato",
+    "farmerId": 3,
+    "category": "Vegetables",
+    "pricePerKg": 65,
+    "isOrganic": true,
+    "harvestDate": "2025-06-10",
+    "description": "Nutritious and organic sweet potatoes.",
+    "imageUrl": "images/sweetpotato.jpg"
+  },
+  {
+    "id": 120,
+    "name": "Chickpeas",
+    "farmerId": 4,
+    "category": "Pulses",
+    "pricePerKg": 55,
+    "isOrganic": false,
+    "harvestDate": "2025-05-15",
+    "description": "High-protein chickpeas for your recipes.",
+    "imageUrl": "images/peas.jpg"
+  }
+]
+
+ document.addEventListener("DOMContentLoaded", () => {
+  // Helper: Find farmer name by ID
+  function getFarmerName(farmerId) {
+    const farmer = farmers.find(f => f.id === farmerId);
+    return farmer ? farmer.name : "Unknown";
+  }
+
+  // Update dashboard metrics
+  function updateDashboard() {
+    const totalFarmers = farmers.length;
+
+    // Find farmers who uploaded at least one product
+    const farmerIdsWithProducts = new Set(products.map(p => p.farmerId));
+    const uploadedFarmers = farmerIdsWithProducts.size;
+
+    // Sum total earnings from all farmers
+    const totalEarnings = farmers.reduce((sum, f) => sum + f.earnings, 0);
+
+    // Product counts
+    const totalProducts = products.length;
+    const organicProducts = products.filter(p => p.isOrganic).length;
+    const nonOrganicProducts = totalProducts - organicProducts;
+
+    // Market price index: average price of all products rounded
+    const marketPriceIndex = totalProducts
+      ? Math.round(products.reduce((sum, p) => sum + p.pricePerKg, 0) / totalProducts)
+      : 0;
+
+    // Highest demand crop: Most frequent product name (by name count)
+    const cropCounts = {};
+    products.forEach(p => {
+      cropCounts[p.name] = (cropCounts[p.name] || 0) + 1;
+    });
+    let topCrop = "--";
+    if (products.length > 0) {
+      topCrop = Object.entries(cropCounts).reduce((a, b) => (b[1] > a[1] ? b : a))[0];
+    }
+
+    // Last updated: Use current date-time in readable format
+    const lastUpdated = new Date().toLocaleString();
+
+    // Set the values in the DOM
+    document.getElementById("totalFarmers").textContent = totalFarmers;
+    document.getElementById("uploadedFarmers").textContent = uploadedFarmers;
+    document.getElementById("totalEarnings").textContent = totalEarnings.toLocaleString();
+    document.getElementById("totalProducts").textContent = totalProducts;
+    document.getElementById("organicProducts").textContent = organicProducts;
+    document.getElementById("nonOrganicProducts").textContent = nonOrganicProducts;
+    document.getElementById("marketPriceIndex").textContent = marketPriceIndex;
+    document.getElementById("topCrop").textContent = topCrop;
+    document.getElementById("lastUpdated").textContent = lastUpdated;
+  }
+
+  // Populate product table with rows and add click handlers
+  function populateProductTable() {
+    const tbody = document.querySelector("#productTable tbody");
+    tbody.innerHTML = ""; // Clear existing rows
+
+    products.forEach(product => {
+      const tr = document.createElement("tr");
+      tr.tabIndex = 0; // Make rows keyboard accessible
+      tr.setAttribute("role", "button");
+      tr.style.cursor = "pointer";
+
+      tr.innerHTML = `
+        <td>${product.name}</td>
+        <td>${getFarmerName(product.farmerId)}</td>
+        <td>${product.category}</td>
+        <td>${product.pricePerKg}</td>
+        <td>${product.isOrganic ? "Yes" : "No"}</td>
+        <td>${product.harvestDate}</td>
+      `;
+
+      // Click or enter key opens popup with details
+      function openDetails() {
+        showProductDetails(product);
+      }
+
+      tr.addEventListener("click", openDetails);
+      tr.addEventListener("keypress", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openDetails();
+        }
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  // Show product details in popup
+  function showProductDetails(product) {
+    const container = document.getElementById("product-details-container");
+    container.style.display = "block";
+
+    document.getElementById("productDetailsTitle").textContent = product.name;
+    const img = document.getElementById("productDetailsImg");
+    img.src = product.imageUrl;
+    img.alt = `${product.name} image`;
+
+    document.getElementById("productFarmer").textContent = getFarmerName(product.farmerId);
+    document.getElementById("productCategory").textContent = product.category;
+    document.getElementById("productPrice").textContent = product.pricePerKg;
+    document.getElementById("productOrganic").textContent = product.isOrganic ? "Yes" : "No";
+    document.getElementById("productHarvestDate").textContent = product.harvestDate;
+    document.getElementById("productDescription").textContent = product.description;
+
+    container.focus(); // Focus for accessibility
+  }
+
+  // Close popup handler
+  const closeBtn = document.getElementById("closeDetailsBtn");
+  closeBtn.addEventListener("click", () => {
+    document.getElementById("product-details-container").style.display = "none";
+  });
+
+  // Close popup on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      document.getElementById("product-details-container").style.display = "none";
+    }
+  });
+
+  // Initialize dashboard
+  updateDashboard();
+  populateProductTable();
+});
+
+
+function logout() {
+  // You can also clear session storage or cookies here if needed
+  window.location.href = "index.html";
+}
+
+</script>
+</body>
+</html>
